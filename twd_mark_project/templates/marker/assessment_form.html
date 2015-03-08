@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load bootstrap_toolkit %}
+
+{% block title %}Self Assessment Form{% endblock %}
+
+	{% block body_block %}
+
+
+
+
+
+
+         <form id="category_form" method="post" action="{% url 'assessment' %}">
+        <h2 class="form-signin-heading">Self Assessment </a></h2>
+
+	            {% csrf_token %}
+
+                {{ form|as_bootstrap }}
+
+
+                <br/>
+             <button class="btn btn-primary" type="submit" name="submit">Submit Self Assessment</button>
+
+	        </form>
+
+
+
+
+
+
+	{% endblock %}
+
+
+{% block side_block %}
+  For each chapter, select one of the following options:
+        <ul>
+        <li><b>Not Completed</b> - It has not been attempted.</li>
+        <li><b>Attempted</b> - It has not attempted, but not completed.</li>
+        <li><b>Completed After Check in</b> - Completed by not before check in date.</li>
+        <li><b>Partially Completed</b> - You have completed the tutorial except the exercises or only some of the exercises, and before the check-in deadline.</li>
+        <li><b>Fully Completed</b> - You have completed the tutorial and all the exercises, and before the check-in deadline.. </li>
+
+   </ul>
+	{% endblock %}

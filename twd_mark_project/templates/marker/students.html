@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+	{% block body_block %}
+<h1>Self Assessment Application for WAD</h1>
+
+    <a href="{% url 'student_list' %}">All Lab Groups</a> |
+    <a href="{% url 'student_lab_list' '1' %}">Lab 1</a> |
+    <a href="{% url 'student_lab_list' '2' %}">Lab 2</a> |
+    <a href="{% url 'student_lab_list' '3' %}">Lab 3</a> |
+    <a href="{% url 'student_lab_list' '4' %}">Lab 4</a> |
+    <a href="{% url 'student_lab_list' '5' %}">Lab 5</a> |
+    <a href="{% url 'student_lab_list' '6' %}">Lab 6</a> |
+    <a href="{% url 'student_lab_list' '7' %}">Lab 7</a> |
+    <a href="{% url 'student_lab_list' '8' %}">Lab 8</a> |
+    <a href="{% url 'student_lab_list' '9' %}">Lab 9</a> |
+    <a href="{% url 'student_lab_list' '10' %}">Lab 10</a> |
+    <a href="{% url 'student_lab_list' '11' %}">Lab 11</a>   
+
+    <h2>{{ lab }}</h2>
+
+
+       <ul>
+    {% for student in student_list %}
+        <li><a href="{%  url 'student_form' student.studentno %}">{{ student.studentno }} - {{ student.lastname }}, {{ student.firstname }}</a> - {{ student.mark }} </li>
+    {% endfor %}
+    </ul>
+
+	{% endblock %}
+

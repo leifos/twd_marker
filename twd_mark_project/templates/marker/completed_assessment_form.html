@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Completed Assessment Sheet{% endblock %}
+
+	{% block body_block %}
+<h1>Completed Assessment Sheet</h1>
+       <p>
+
+       {{ record.studentno }}  {{ record.firstname }} {{ record.lastname }}
+       <br/>
+       {{ record.get_lab_display }}
+           <br/>
+        Chapter 3: {{ record.get_chapter3_display }}
+           <br/>
+        Chapter 4: {{ record.get_chapter4_display }}
+        <br/>
+           Chapter 5: {{ record.get_chapter5_display }}
+ <br/>
+        Chapter 6: {{ record.get_chapter6_display }}
+      <br/>
+        Chapter 7: {{ record.get_chapter7_display }}
+<br/>
+        Chapter 8: {{ record.get_chapter8_display }}
+     <br/>
+        Chapter 9: {{ record.get_chapter9_display }}
+        <br/>
+           Chapter 10: {{ record.get_chapter10_display }}
+        <br/>
+           Chapter 11: {{ record.get_chapter11_display }}
+           <br/>
+        Chapter 12: {{ record.get_chapter12_display }}
+           <br/>
+        Chapter 13: {{ record.get_chapter13_display }}
+           <br/>
+        Chapter 14: {{ record.get_chapter14_display }}
+           <br/>
+        Chapter 15: {{ record.get_chapter15_display }}
+           <br/>
+        Chapter 18: {{ record.get_chapter16_display }}
+           <br/>
+        Chapter 21: {{ record.get_chapter21_display }}
+       <br/>
+       Notes: {{ record.notes }}
+
+       </p>
+
+
+         {% if user.is_authenticated %}
+             Estimated Mark out of 55: {{ mark }}
+             <br/>
+
+
+        <a href="{% url 'student_list' %}"
+         <button class="btn btn-primary" type="submit" name="submit">Back</button>
+        </a>
+        {% endif %}
+
+	{% endblock %}

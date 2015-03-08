@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+	{% block body_block %}
+<h1>Self Assessment Application for WAD</h1>
+       <p>
+        Click the button below to fill in the self assessment form.
+       </p>
+
+        <a href="{% url 'assessment' %}"
+         <button class="btn btn-primary" type="submit" name="submit">Go to Assessment Sheet</button>
+        </a>
+
+	{% endblock %}
