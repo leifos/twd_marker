@@ -53,7 +53,7 @@ class AssessmentSheet(models.Model):
 
 
 class AssessmentSheetForm(forms.ModelForm):
-    studentno = forms.CharField(label='Student No.',max_length=8, min_length=8, help_text='Please enter your student no (without the letter)', required=True)
+    studentno = forms.CharField(label='Student No.',max_length=7, min_length=7, help_text='Please enter your student no (without the letter)', required=True)
     lab = forms.ChoiceField(choices=LAB_CHOICES, help_text='Please select the lab you are in')
     pa = forms.URLField(label='PythonAnywere Link', help_text='If deployed, add your PythonAnyhwere Link: i.e. http://<username>.pythonanywhere.com/rango/', required=False)
     github_username = forms.CharField(max_length=64, help_text='Your GitHub Account name i.e. leifos', required=True)
