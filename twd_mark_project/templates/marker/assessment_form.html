@@ -6,17 +6,34 @@
 
 	{% block body_block %}
 
-
-
-
-
-
          <form id="category_form" method="post" action="{% url 'assessment' %}">
         <h2 class="form-signin-heading">Self Assessment </a></h2>
 
+
+
 	            {% csrf_token %}
 
-                {{ form|as_bootstrap }}
+
+
+               {% for hidden in form.hidden_fields %}
+	                {{ hidden }}
+	            {% endfor %}
+
+	            {% for field in form.visible_fields %}
+             <br/>
+                    <div><b>{{ field.label}}</b> {{field.verbose_name}}</div>
+                    {% if field.errors %}
+	                <div class="alert alert-danger alert-dismissible">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ field.errors }}</div>
+                    {% endif %}
+
+                    <div>{% if field.help_text %}
+	                    {{ field.help_text }}<br/>
+                    {% endif %}
+	                {{ field }}</div>
+	            {% endfor %}
+
 
 
                 <br/>
@@ -39,7 +56,7 @@
         <li><b>Attempted</b> - It has not attempted, but not completed.</li>
         <li><b>Completed After Check in</b> - Completed by not before check in date.</li>
         <li><b>Partially Completed</b> - You have completed the tutorial except the exercises or only some of the exercises, and before the check-in deadline.</li>
-        <li><b>Fully Completed</b> - You have completed the tutorial and all the exercises, and before the check-in deadline.. </li>
+        <li><b>Fully Completed</b> - You have completed the tutorial and all the exercises, and before the check-in deadline. </li>
 
    </ul>
 	{% endblock %}

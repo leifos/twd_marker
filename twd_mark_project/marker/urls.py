@@ -5,7 +5,7 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^student/lab/(?P<lab>\d+)/$', views.student, name='student_lab_list'),
 
-    url(r'^student/(?P<studentno>\d{8})/$', views.student_form, name='student_form'),
+    url(r'^student/(?P<studentno>\d+)/$', views.student_form, name='student_form'),
 
 
     url(r'^student/$', views.student, name='student_list'),

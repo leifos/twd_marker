@@ -4,47 +4,70 @@
 
 	{% block body_block %}
 <h1>Completed Assessment Sheet</h1>
+
+        {% if not user.is_authenticated %}
+        <div class="alert alert-warning"> Print or Save this sheet for your reference.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        {% endif %}
+
+<div class="panel">
        <p>
 
-       {{ record.studentno }}  {{ record.firstname }} {{ record.lastname }}
+       <b>Student No: </b> {{ record.studentno }}
+           <br/>
+           <b>Name: </b> {{ record.firstname }} {{ record.lastname }}
        <br/>
        {{ record.get_lab_display }}
-           <br/>
-        Chapter 3: {{ record.get_chapter3_display }}
-           <br/>
-        Chapter 4: {{ record.get_chapter4_display }}
-        <br/>
-           Chapter 5: {{ record.get_chapter5_display }}
- <br/>
-        Chapter 6: {{ record.get_chapter6_display }}
-      <br/>
-        Chapter 7: {{ record.get_chapter7_display }}
-<br/>
-        Chapter 8: {{ record.get_chapter8_display }}
-     <br/>
-        Chapter 9: {{ record.get_chapter9_display }}
-        <br/>
-           Chapter 10: {{ record.get_chapter10_display }}
-        <br/>
-           Chapter 11: {{ record.get_chapter11_display }}
-           <br/>
-        Chapter 12: {{ record.get_chapter12_display }}
-           <br/>
-        Chapter 13: {{ record.get_chapter13_display }}
-           <br/>
-        Chapter 14: {{ record.get_chapter14_display }}
-           <br/>
-        Chapter 15: {{ record.get_chapter15_display }}
-           <br/>
-        Chapter 18: {{ record.get_chapter16_display }}
-           <br/>
-        Chapter 21: {{ record.get_chapter21_display }}
        <br/>
-       Notes: {{ record.notes }}
+       </p>
+       <p>
+       <b>PythonAnywhere Link:</b>
+       {% if record.pa %}
+        <a href="{{record.pa}}">{{record.pa}}</a>
+           {% endif%}
+
+        <br/>
+          <b>Github Username:</b> {{record.github_username}}
+          <br/>
+          <b>Github Repo:</b> <a href="{{record.github_repo}}"> {{record.github_repo}}</a>
+        </p>
+        <p>
+        <b>Chapter 3:</b> {{ record.get_chapter3_display }}
+           <p/>
+        <b>Chapter 4:</b> {{ record.get_chapter4_display }}
+        <p/>
+           <b>Chapter 5:</b> {{ record.get_chapter5_display }}
+ <p/>
+       <b> Chapter 6:</b> {{ record.get_chapter6_display }}
+      <p/>
+       <b>Chapter 7:</b> {{ record.get_chapter7_display }}
+<p/>
+        <b>Chapter 8:</b> {{ record.get_chapter8_display }}
+     <p/>
+        <b>Chapter 9:</b> {{ record.get_chapter9_display }}
+        <p/>
+        <b>   Chapter 10:</b> {{ record.get_chapter10_display }}
+        <p/>
+        <b>   Chapter 11:</b> {{ record.get_chapter11_display }}
+           <p/>
+        <b>Chapter 12:</b> {{ record.get_chapter12_display }}
+           <p/>
+        <b>Chapter 13:</b> {{ record.get_chapter13_display }}
+           <p/>
+        <b>Chapter 14:</b> {{ record.get_chapter14_display }}
+           <p/>
+       <b> Chapter 15:</b> {{ record.get_chapter15_display }}
+           <p/>
+        <b>Chapter 18:</b> {{ record.get_chapter16_display }}
+           <p/>
+       <b> Chapter 21:</b> {{ record.get_chapter21_display }}
+       <p/>
+      <b> Notes:</b> {{ record.notes }}
 
        </p>
 
-
+<div class="panel-footer">
          {% if user.is_authenticated %}
              Estimated Mark out of 55: {{ mark }}
              <br/>
@@ -54,5 +77,6 @@
          <button class="btn btn-primary" type="submit" name="submit">Back</button>
         </a>
         {% endif %}
-
+</div>
+    </div>
 	{% endblock %}
